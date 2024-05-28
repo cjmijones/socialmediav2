@@ -12,9 +12,13 @@ const EditTweet = ({ setOpen, tweetUserId, tweetId, setData }) => {
 
   const handleDelete = async () => {
     try {
-      await api.delete(`/tweets/${currentUser._id}`, {
-        data: { tweetId: tweetId },
-      });
+      await api.delete(
+        `/tweets/${currentUser._id}`,
+        {
+          data: { tweetId: tweetId },
+        },
+        { withCredentials: true }
+      );
       setOpen(false);
 
       // Refresh the tweet list (Assuming setData updates the list of tweets)

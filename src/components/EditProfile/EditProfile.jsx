@@ -47,9 +47,13 @@ const EditProfile = ({ setOpen }) => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
           try {
-            const updateProfile = await api.put(`/users/${currentUser._id}`, {
-              profilePicture: downloadURL,
-            });
+            const updateProfile = await api.put(
+              `/users/${currentUser._id}`,
+              {
+                profilePicture: downloadURL,
+              },
+              { withCredentials: true }
+            );
             console.log(updateProfile);
             dispatch(changeProfile(downloadURL));
           } catch (error) {
@@ -62,7 +66,9 @@ const EditProfile = ({ setOpen }) => {
 
   const handleDelete = async () => {
     try {
-      await api.delete(`/users/delete/${currentUser._id}`);
+      await api.delete(`/users/delete/${currentUser._id}`, {
+        withCredentials: true,
+      });
       dispatch(logout());
       console.log("Account deletion request issued");
       navigate("/signin");
