@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
-
+import api from "../../api/axios";
 import { useDispatch } from "react-redux";
 import { loginStart, loginSuccess, loginFailed } from "../../redux/userSlice";
 
@@ -18,7 +17,8 @@ const Signin = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post("/auth/signin", { username, password });
+      const res = await api.post("/auth/signin", { username, password });
+      console.log("Cookies: ", document.cookie);
       dispatch(loginSuccess(res.data));
       navigate("/");
     } catch (err) {
@@ -31,11 +31,12 @@ const Signin = () => {
     dispatch(loginStart());
 
     try {
-      const res = await axios.post("/auth/signup", {
+      const res = await api.post("/auth/signup", {
         username,
         email,
         password,
       });
+      console.log("Cookies: ", document.cookie);
       dispatch(loginSuccess(res.data));
       navigate("/");
     } catch (err) {

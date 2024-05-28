@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../api/axios";
 import formatDistance from "date-fns/formatDistance";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -19,7 +19,7 @@ const Tweet = ({ tweet, setData }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`/users/find/${tweet.userID}`);
+        const response = await api.get(`/users/find/${tweet.userID}`);
         setUserData(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -33,15 +33,15 @@ const Tweet = ({ tweet, setData }) => {
     e.preventDefault();
 
     try {
-      await axios.put(`/tweets/${tweet._id}/like`, { id: currentUser._id });
+      await api.put(`/tweets/${tweet._id}/like`, { id: currentUser._id });
 
       let newData;
       if (location.includes("profile")) {
-        newData = await axios.get(`/tweets/user/all/${id}`);
+        newData = await api.get(`/tweets/user/all/${id}`);
       } else if (location.includes("explore")) {
-        newData = await axios.get(`/tweets/explore`);
+        newData = await api.get(`/tweets/explore`);
       } else {
-        newData = await axios.get(`/tweets/timeline/${currentUser._id}`);
+        newData = await api.get(`/tweets/timeline/${currentUser._id}`);
       }
       setData(newData.data);
     } catch (error) {

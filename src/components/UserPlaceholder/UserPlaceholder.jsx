@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import api from "../../api/axios";
 import { useLocation, useParams } from "react-router-dom";
 
 const UserPlaceholder = ({ setUserData, userData }) => {
@@ -10,7 +9,7 @@ const UserPlaceholder = ({ setUserData, userData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userProfile = await axios.get(`/users/find/${id}`);
+        const userProfile = await api.get(`/users/find/${id}`);
         setUserData(userProfile.data);
       } catch (e) {
         console.log(e);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TimelineTweet from "../TimelineTweet/TimelineTweet";
 
 import { useSelector } from "react-redux";
-import axios from "axios";
+import api from "../../api/axios";
 
 const MainTweet = () => {
   const [tweetText, setTweetText] = useState();
@@ -16,7 +16,7 @@ const MainTweet = () => {
       console.log("Trying to submit");
       console.log(currentUser._id);
       console.log(tweetText);
-      const submitTweet = await axios.post("/tweets", {
+      const submitTweet = await api.post("/tweets", {
         userID: currentUser._id,
         description: tweetText,
       });

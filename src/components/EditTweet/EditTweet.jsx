@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../../api/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ const EditTweet = ({ setOpen, tweetUserId, tweetId, setData }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/tweets/${currentUser._id}`, {
+      await api.delete(`/tweets/${currentUser._id}`, {
         data: { tweetId: tweetId },
       });
       setOpen(false);
@@ -20,11 +20,11 @@ const EditTweet = ({ setOpen, tweetUserId, tweetId, setData }) => {
       // Refresh the tweet list (Assuming setData updates the list of tweets)
       let newData;
       if (location.includes("profile")) {
-        newData = await axios.get(`/tweets/user/all/${id}`);
+        newData = await api.get(`/tweets/user/all/${id}`);
       } else if (location.includes("explore")) {
-        newData = await axios.get(`/tweets/explore`);
+        newData = await api.get(`/tweets/explore`);
       } else {
-        newData = await axios.get(`/tweets/timeline/${currentUser._id}`);
+        newData = await api.get(`/tweets/timeline/${currentUser._id}`);
       }
       setData(newData.data);
     } catch (error) {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-
+import api from "../../api/axios";
 import { useSelector } from "react-redux";
 import Tweet from "../Tweet/Tweet";
 
@@ -12,7 +11,7 @@ const TimelineTweet = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const timelineTweets = await axios.get(
+        const timelineTweets = await api.get(
           `/tweets/timeline/${currentUser._id}`
         );
 

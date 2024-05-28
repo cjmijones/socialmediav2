@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../api/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { changeProfile, logout } from "../../redux/userSlice";
 import { useNavigate, Link } from "react-router-dom";
@@ -47,7 +47,7 @@ const EditProfile = ({ setOpen }) => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
           try {
-            const updateProfile = await axios.put(`/users/${currentUser._id}`, {
+            const updateProfile = await api.put(`/users/${currentUser._id}`, {
               profilePicture: downloadURL,
             });
             console.log(updateProfile);
@@ -62,7 +62,7 @@ const EditProfile = ({ setOpen }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/users/delete/${currentUser._id}`);
+      await api.delete(`/users/delete/${currentUser._id}`);
       dispatch(logout());
       console.log("Account deletion request issued");
       navigate("/signin");
