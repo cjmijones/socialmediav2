@@ -16,14 +16,10 @@ const MainTweet = () => {
       console.log("Trying to submit");
       console.log(currentUser._id);
       console.log(tweetText);
-      const submitTweet = await api.post(
-        "/tweets",
-        {
-          userID: currentUser._id,
-          description: tweetText,
-        },
-        { withCredentials: true }
-      );
+      const submitTweet = await api.post("/tweets", {
+        userID: currentUser._id,
+        description: tweetText,
+      });
       console.log("Tweet Submitted");
       window.location.reload(false);
     } catch (err) {

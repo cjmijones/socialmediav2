@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import api from "../../api/axios";
 import { useDispatch } from "react-redux";
 import { loginStart, loginSuccess, loginFailed } from "../../redux/userSlice";
-
 import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
@@ -18,8 +17,10 @@ const Signin = () => {
     dispatch(loginStart());
     try {
       const res = await api.post("/auth/signin", { username, password });
-      console.log("Cookies: ", document.cookie);
-      dispatch(loginSuccess(res.data));
+      const token = res.data.token;
+      localStorage.setItem("token", token);
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      dispatch(loginSuccess(res.data.user));
       navigate("/");
     } catch (err) {
       dispatch(loginFailed());
@@ -29,15 +30,12 @@ const Signin = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     dispatch(loginStart());
-
     try {
-      const res = await api.post("/auth/signup", {
-        username,
-        email,
-        password,
-      });
-      console.log("Cookies: ", document.cookie);
-      dispatch(loginSuccess(res.data));
+      const res = await api.post("/auth/signup", { username, email, password });
+      const token = res.data.token;
+      localStorage.setItem("token", token);
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      dispatch(loginSuccess(res.data.user));
       navigate("/");
     } catch (err) {
       dispatch(loginFailed());
@@ -47,7 +45,6 @@ const Signin = () => {
   return (
     <form className="bg-gray-200 flex flex-col py-12 px-8 rounded-lg w-8/12 md:w-6/12 mx-auto gap-10">
       <h2 className="text-3xl font-bold text-center">Sign in to Twitter</h2>
-
       <input
         onChange={(e) => setUsername(e.target.value)}
         type="text"
@@ -60,16 +57,13 @@ const Signin = () => {
         placeholder="password"
         className="text-xl py-2 rounded-full px-4"
       />
-
       <button
         className="text-xl py-2 rounded-full px-4 bg-blue-500 text-white"
         onClick={handleLogin}
       >
         Sign in
       </button>
-
       <p className="text-center text-xl">Don't have an account?</p>
-
       <input
         onChange={(e) => setUsername(e.target.value)}
         type="text"
@@ -89,7 +83,6 @@ const Signin = () => {
         placeholder="password"
         className="text-xl py-2 rounded-full px-4"
       />
-
       <button
         onClick={handleSignup}
         className="text-xl py-2 rounded-full px-4 bg-blue-500 text-white"
