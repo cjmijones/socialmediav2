@@ -17,10 +17,13 @@ const Signin = () => {
     dispatch(loginStart());
     try {
       const res = await api.post("/auth/signin", { username, password });
-      const token = res.data.token;
+      const { token, tokenExpiry, ...userData } = res.data;
+
       localStorage.setItem("token", token);
+      localStorage.setItem("tokenExpiry", tokenExpiry);
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      dispatch(loginSuccess(res.data.user));
+
+      dispatch(loginSuccess(userData));
       navigate("/");
     } catch (err) {
       dispatch(loginFailed());
@@ -32,10 +35,13 @@ const Signin = () => {
     dispatch(loginStart());
     try {
       const res = await api.post("/auth/signup", { username, email, password });
-      const token = res.data.token;
+      const { token, tokenExpiry, ...userData } = res.data;
+
       localStorage.setItem("token", token);
+      localStorage.setItem("tokenExpiry", tokenExpiry);
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      dispatch(loginSuccess(res.data.user));
+
+      dispatch(loginSuccess(userData));
       navigate("/");
     } catch (err) {
       dispatch(loginFailed());

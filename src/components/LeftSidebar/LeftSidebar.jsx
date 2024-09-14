@@ -14,6 +14,8 @@ const LeftSidebar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("tokenExpiry");
     dispatch(logout());
   };
 

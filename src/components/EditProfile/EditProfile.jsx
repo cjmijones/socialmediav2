@@ -69,6 +69,8 @@ const EditProfile = ({ setOpen }) => {
       await api.delete(`/users/delete/${currentUser._id}`, {
         withCredentials: true,
       });
+      localStorage.removeItem("token");
+      localStorage.removeItem("tokenExpiry");
       dispatch(logout());
       console.log("Account deletion request issued");
       navigate("/signin");

@@ -1,4 +1,12 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  useNavigate,
+} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "./redux/userSlice";
 
 import "./App.css";
 import Home from "./pages/Home/Home";
@@ -51,6 +59,36 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    const tokenExpiry = localStorage.getItem("tokenExpiry");
+    if (tokenExpiry && Date.now() > parseInt(tokenExpiry)) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("tokenExpiry");
+      dispatch(logout());
+      navigate("/signin");
+    }
+  }, [dispatch, navigate]);
+
+  useEffect(() => {
+    const checkTokenExpiry = () => {
+      const tokenExpiry = localStorage.getItem("tokenExpiry");
+      if (tokenExpiry && Date.now() > parseInt(tokenExpiry)) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("tokenExpiry");
+        dispatch(logout());
+        navigate("/signin");
+      }
+    };
+
+    const interval = setInterval(checkTokenExpiry, 1000 * 60); // Check every minute
+
+    return () => clearInterval(interval);
+  }, [dispatch, navigate]);
+
   return (
     <div>
       <RouterProvider router={router}></RouterProvider>
