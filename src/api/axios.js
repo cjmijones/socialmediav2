@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from "../redux/store";
+import { store } from "../redux/store";
 import { logout } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 

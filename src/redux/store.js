@@ -23,6 +23,8 @@ const rootReducer = combineReducers({ user: userReducer });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+const devMode = process.env.NODE_ENV !== "production";
+
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
@@ -31,7 +33,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  devTools: false,
+  devTools: devMode,
 });
 
 export const persistor = persistStore(store);
