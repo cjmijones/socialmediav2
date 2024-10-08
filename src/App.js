@@ -20,7 +20,7 @@ const Layout = () => {
       <TokenExpiryChecker />
       {/* Conditionally render Navbar */}
       {currentUser && <Navbar />}
-      <div className="pt-16"> {/* Add padding to account for fixed Navbar */}
+      <div className="mt-16 overflow-y-auto"> {/* Adjust margin to account for fixed Navbar */}
         <Outlet />
       </div>
     </div>
