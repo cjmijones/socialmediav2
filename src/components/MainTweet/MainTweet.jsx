@@ -28,7 +28,7 @@ const MainTweet = () => {
   };
 
   return (
-    <div>
+    <div className="main-content">
       {currentUser && (
         <p className="font-bold pl-2 my-2">{currentUser.username}</p>
       )}
