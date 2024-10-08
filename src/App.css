@@ -3,31 +3,24 @@
 @tailwind utilities;
 
 .left-sidebar, .right-sidebar {
-  position: fixed;
-  top: 0;
-  height: 100vh;
+  position: relative;
+  height: auto;
   overflow-y: auto;
-  width: 15%;
+  width: 100%;
 }
 
 .main-content {
-  margin-left: 15%;
-  margin-right: 15%;
   overflow-y: auto;
-  height: 100vh;
-  width: 70%;
+  height: auto;
+  width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .left-sidebar, .right-sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
+    width: 15%;
   }
 
   .main-content {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
+    width: 70%;
   }
 }
