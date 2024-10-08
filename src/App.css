@@ -11,8 +11,9 @@
 
 .main-content {
   overflow-y: auto;
-  height: 100vh; /* Set a fixed height */
+  height: calc(100vh - 60px); /* Adjust height to account for navbar */
   width: 100%;
+  margin-top: 60px; /* Add margin to avoid overlap with navbar */
 }
 
 @media (min-width: 768px) {
