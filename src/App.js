@@ -15,7 +15,7 @@ const Layout = () => {
   const { currentUser } = useSelector((state) => state.user);
 
   return (
-    <div className="md:w-8/12 mx-auto">
+    <div>
       {/* Token expiry checker */}
       <TokenExpiryChecker />
       {/* Conditionally render Navbar */}
