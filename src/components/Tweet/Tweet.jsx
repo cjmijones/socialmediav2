@@ -54,7 +54,7 @@ const Tweet = ({ tweet, setData }) => {
 
   return (
     <>
-      <div className="tweet p-4 border-b border-gray-300">
+      <div className="main-content tweet p-4 border-b border-gray-300">
         <div className="flex justify-between items-start">
           <div className="flex items-center space-x-2">
             <Link to={`/profile/${userData._id}`}>
