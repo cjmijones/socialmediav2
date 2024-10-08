@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities;.left-sidebar, .right-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
