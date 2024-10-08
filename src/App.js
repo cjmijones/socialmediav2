@@ -19,12 +19,10 @@ const Layout = () => {
       {/* Token expiry checker */}
       <TokenExpiryChecker />
       {/* Conditionally render Navbar */}
-      {currentUser && (
-        <h1>
-          <Navbar />
-        </h1>
-      )}
-      <Outlet></Outlet>
+      {currentUser && <Navbar />}
+      <div className="pt-16"> {/* Add padding to account for fixed Navbar */}
+        <Outlet />
+      </div>
     </div>
   );
 };
