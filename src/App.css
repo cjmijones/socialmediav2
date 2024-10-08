@@ -1,8 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;.left-sidebar, .right-sidebar {
-  position: sticky;
+  position: fixed;
   top: 0;
   height: 100vh;
   overflow-y: auto;
+  width: 20%; /* Adjust width as needed */
+}
+
+.main-content {
+  margin-left: 20%; /* Adjust to match sidebar width */
+  margin-right: 20%; /* Adjust to match sidebar width */
+  overflow-y: auto;
+  height: 100vh;
 }
