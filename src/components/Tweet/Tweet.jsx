@@ -18,6 +18,7 @@ const Tweet = ({ tweet, setData }) => {
 
   useEffect(() => {
     const fetchUserData = async () => {
+      console.log("Finding user for Tweet Component");
       try {
         const response = await api.get(`/users/find/${tweet.userID}`);
         setUserData(response.data);

@@ -8,6 +8,7 @@ const UserPlaceholder = ({ setUserData, userData }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log("Finding user for UserPlaceholder Component");
       try {
         const userProfile = await api.get(`/users/find/${id}`);
         setUserData(userProfile.data);

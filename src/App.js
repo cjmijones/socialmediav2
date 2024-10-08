@@ -9,6 +9,7 @@ import Signin from "./pages/SignIn/SignIn";
 import Navbar from "./components/Navbar/Navbar";
 import Error from "./pages/Error/Error";
 import TokenExpiryChecker from "./components/TokenExpiryChecker/TokenExpiryChecker";
+import NewsFeed from "./pages/NewsFeed/NewsFeed";
 
 const Layout = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/explore/",
         element: <Explore />,
+      },
+      {
+        path: "/newsfeed",
+        element: <NewsFeed />,
       },
       {
         path: "/signin",

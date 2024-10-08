@@ -19,6 +19,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log("Finding user for Profile Component");
         const [userTweetsResponse, userProfileResponse] = await Promise.all([
           api.get(`/tweets/user/all/${id}`),
           api.get(`/users/find/${id}`),

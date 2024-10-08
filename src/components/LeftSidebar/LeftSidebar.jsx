@@ -40,6 +40,12 @@ const LeftSidebar = () => {
             <p>Profile</p>
           </div>
         </Link>
+        <Link to={`/newsfeed`}>
+          <div className="flex items-center space-x-6 px-2 py-2 hover:bg-slate-200 rounded-full cursor-pointer">
+            <PersonIcon fontSize="large" />
+            <p>News Feed</p>
+          </div>
+        </Link>
       </div>
       <div className="flex justify-between">
         <div>
