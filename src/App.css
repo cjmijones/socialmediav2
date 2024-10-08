@@ -11,7 +11,7 @@
 
 .main-content {
   overflow-y: auto;
-  height: auto;
+  height: 100vh; /* Set a fixed height */
   width: 100%;
 }
 
