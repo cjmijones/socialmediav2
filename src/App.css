@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;.left-sidebar, .right-sidebar {
+@tailwind utilities;
+
+.left-sidebar, .right-sidebar {
   position: fixed;
   top: 0;
   height: 100vh;
@@ -13,4 +15,5 @@
   margin-right: 15%; /* Adjust to match sidebar width */
   overflow-y: auto;
   height: 100vh;
+  width: 70%; /* Ensure the middle section takes the remaining space */
 }
