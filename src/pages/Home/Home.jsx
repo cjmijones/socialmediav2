@@ -20,7 +20,7 @@ const Home = () => {
           <div className="px-6">
             <LeftSidebar />
           </div>
-          <div className="col-span-2 border-x-2 border-t-slate-800 px-6">
+          <div className="main-content border-x-2 border-t-slate-800 px-6">
             <MainTweet />
           </div>
           <div className="px-6 col-span-1 w-full">

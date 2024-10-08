@@ -81,7 +81,7 @@ const Profile = () => {
         <div className="px-6">
           <LeftSidebar />
         </div>
-        <div className="col-span-2 px-6 border-x-2 border-t-slate-800">
+        <div className="main-content px-6 border-x-2 border-t-slate-800">
           <div className="flex justify-between items-center">
             <img
               src={userProfile?.profilePicture}
