@@ -14,6 +14,7 @@
   height: calc(100vh - 60px); /* Adjust height to account for navbar */
   width: 100%;
   margin-top: 60px; /* Add margin to avoid overlap with navbar */
+  position: relative; /* Ensure it scrolls independently */
 }
 
 @media (min-width: 768px) {
