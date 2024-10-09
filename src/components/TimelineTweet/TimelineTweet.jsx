@@ -26,7 +26,7 @@ const TimelineTweet = () => {
 
   console.log("Timeline", timeLine);
   return (
-    <div className="main-content mt-6">
+    <div className="sub-main-content mt-6">
       {timeLine &&
         timeLine.map((tweet) => {
           return (
