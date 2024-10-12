@@ -17,7 +17,7 @@ const ArticlesFeed = () => {
   if (error) return <p>Error loading articles: {error}</p>;
 
   return (
-    <div>
+    <div className="main-content-area">
       {articles.map((article) => (
         <ArticleCard key={article._id} article={article} />
       ))}

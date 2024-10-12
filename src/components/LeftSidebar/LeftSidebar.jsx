@@ -20,7 +20,7 @@ const LeftSidebar = () => {
   };
 
   return (
-    <div className="left-sidebar flex flex-col h-full md:h-[90vh] justify-between mr-6">
+    <div className="left-sidebar-content">
       <div className="mt-6 flex flex-col space-y-4">
         <Link to="/">
           <div className="flex items-center space-x-6 px-2 py-2 hover:bg-slate-200 rounded-full cursor-pointer">
@@ -47,7 +47,7 @@ const LeftSidebar = () => {
           </div>
         </Link>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-auto mb-4">
         <div>
           <p className="font-bold">{currentUser.username}</p>
           <p className="font-bold">@{currentUser.username}</p>

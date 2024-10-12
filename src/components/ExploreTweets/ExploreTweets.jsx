@@ -22,7 +22,7 @@ const ExploreTweets = () => {
   }, [currentUser._id]);
 
   return (
-    <div className="mt-6">
+    <div className="main-content-area mt-6">
       {explore &&
         explore.map((tweet) => {
           return (

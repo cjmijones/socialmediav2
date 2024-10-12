@@ -78,28 +78,30 @@ const Profile = () => {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-4">
-        <div className="left-sidebar px-6 md:col-span-1">
+        <div className="left-sidebar-wrapper px-6 md:col-span-1">
           <LeftSidebar />
         </div>
-        <div className="main-content border-x-2 border-t-slate-800 px-6 md:col-span-2">
-          <div className="flex justify-between items-center">
-            <img
-              src={userProfile?.profilePicture}
-              alt="Profile Picture"
-              className="w-16 h-16"
-            />
-            {renderFollowButton()}
-          </div>
-          <div className="mt-6">
-            {userTweets &&
-              userTweets.map((tweet) => (
-                <div className="p-2" key={tweet._id}>
-                  <Tweet tweet={tweet} setData={setUserTweets} />
-                </div>
-              ))}
+        <div className="main-content-wrapper md:col-span-2">
+          <div className="main-content-area">
+            <div className="flex justify-between items-center">
+              <img
+                src={userProfile?.profilePicture}
+                alt="Profile Picture"
+                className="w-16 h-16"
+              />
+              {renderFollowButton()}
+            </div>
+            <div className="mt-6">
+              {userTweets &&
+                userTweets.map((tweet) => (
+                  <div className="p-2" key={tweet._id}>
+                    <Tweet tweet={tweet} setData={setUserTweets} />
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
-        <div className="right-sidebar px-6 md:col-span-1">
+        <div className="right-sidebar-wrapper px-6 md:col-span-1">
           <RightSidebar />
         </div>
       </div>

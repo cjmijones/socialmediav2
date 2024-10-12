@@ -1,59 +1,24 @@
+/* Base Styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.left-sidebar {
-  position: relative;
-  height: auto;
-  overflow-y: auto;
-  margin-top: 0.5rem;
-  width: 100%;
+/* Lock the base elements */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 
-.right-sidebar {
-  position: relative;
-  height: auto;
-  overflow-y: auto;
-  margin-top: 1rem;
-  width: 100%;
+/* App Wrapper */
+.app-wrapper {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.main-content {
-  overflow-y: auto;
-  height: calc(100vh - 60px); /* Adjust height to account for navbar */
-  width: 110%;
-  margin-top: 0px; /* Add margin to avoid overlap with navbar */
-  position: relative; /* Ensure it scrolls independently */
-}
-
-.sub-main-content {
-  overflow-y: auto;
-  height: calc(100vh - 60px); /* Adjust height to account for navbar */
-  width: 100%;
-  margin-top: 0px; /* Add margin to avoid overlap with navbar */
-  position: relative; /* Ensure it scrolls independently */
-}
-
-@media (min-width: 768px) {
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1rem;
-  }
-
-  .left-sidebar,
-  .right-sidebar {
-    width: auto;
-  }
-
-  .main-content {
-    width: auto;
-  }
-
-  .sub-main-content {
-    width: auto;
-  }
-}
+/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -61,4 +26,79 @@
   height: 4rem; /* 64px */
   z-index: 10;
   background-color: white;
+  border-left: 0px solid #1e293b; /* Tailwind's border-x-2 border-t-slate-800 */
+  border-right: 0px solid #1e293b;
+}
+
+/* Main Content Wrapper */
+.main-content-wrapper {
+  padding-left: 0rem; /* Tailwind's px-6 */
+  padding-right: 0rem;
+}
+
+/* Main Content Area */
+.main-content-area {
+  overflow-y: auto;
+  height: calc(100vh - 4rem); /* Adjust for navbar height */
+  margin-top: 0.55rem; /* Avoid overlap with navbar */
+  position: relative;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  border-left: 2px solid #1e293b; /* Tailwind's border-x-2 border-t-slate-800 */
+  border-right: 2px solid #1e293b;
+  padding-left: 0.25rem; /* Tailwind's px-6 */
+  padding-right: 0.25rem;
+}
+
+/* Left Sidebar Wrapper */
+.left-sidebar-wrapper {
+  padding-left: 1.5rem; /* Equivalent to Tailwind's px-6 */
+  padding-right: 0.5rem;
+}
+
+.left-sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 4rem); /* Adjust for navbar */
+  justify-content: space-between;
+  margin-top: 0rem; /* Avoid overlap with navbar */
+  margin-right: 1.5rem; /* Equivalent to Tailwind's mr-6 */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Right Sidebar Wrapper */
+.right-sidebar-wrapper {
+  padding-left: 1.5rem; /* Equivalent to Tailwind's px-6 */
+  padding-right: 1.5rem;
+  margin-top: 0.65rem;
+}
+
+.right-sidebar-content {
+  padding: 1.5rem; /* Equivalent to Tailwind's p-6 */
+  background-color: #f1f5f9; /* Equivalent to Tailwind's bg-slate-100 */
+  border-radius: 0.5rem; /* Equivalent to Tailwind's rounded-lg */
+  margin-left: 1rem; /* Equivalent to Tailwind's mx-4 */
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Equivalent to Tailwind's space-y-4 */
+  height: calc(100vh - 4rem); /* Adjust for navbar */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive Grid */
+@media (min-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+  }
+
+  .main-content-area,
+  .left-sidebar-content,
+  .right-sidebar-content {
+    height: calc(100vh - 4rem); /* Adjust for navbar */
+    width: auto;
+  }
 }
