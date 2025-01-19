@@ -30,6 +30,11 @@ body {
   border-right: 0px solid #1e293b;
 }
 
+.middle-navbar-border {
+  border-left: 2px solid #1e293b;
+  border-right: 2px solid #1e293b;
+}
+
 /* Main Content Wrapper */
 .main-content-wrapper {
   padding-left: 0rem; /* Tailwind's px-6 */

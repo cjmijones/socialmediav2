@@ -18,7 +18,7 @@ const Explore = () => {
           <div className="left-sidebar-wrapper px-6 md:col-span-1">
             <LeftSidebar />
           </div>
-          <div className="main-content-wrapper border-x-2 border-t-slate-800 px-6 md:col-span-2">
+          <div className="main-content-wrapper px-6 md:col-span-2">
             <ExploreTweets />
           </div>
           <div className="right-sidebar-wrapper px-6 md:col-span-1">

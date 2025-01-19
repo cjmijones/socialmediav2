@@ -7,10 +7,10 @@ import api from "../api/axios";
 // Fetch articles
 export const fetchArticles = createAsyncThunk(
   "articles/fetchArticles",
-  async (_, { rejectWithValue }) => {
+  async ({ page, limit }, { rejectWithValue }) => {
     try {
-      const response = await api.get("/articles?page=1&limit=5");
-      return response.data;
+      const response = await api.get(`/articles?page=${page}&limit=${limit}`);
+      return response.data; // This now includes articles and pagination info
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
     }
@@ -120,6 +120,10 @@ const initialState = {
   articles: [],
   isLoading: false,
   error: null,
+  totalArticles: 0,
+  currentPage: 1,
+  totalPages: 1,
+  hasMore: true,
 };
 
 // Articles slice
@@ -138,7 +142,11 @@ const articlesSlice = createSlice({
       })
       .addCase(fetchArticles.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.articles = action.payload;
+        state.articles = [...state.articles, ...action.payload.articles];
+        state.totalArticles = action.payload.totalArticles;
+        state.currentPage = action.payload.currentPage;
+        state.totalPages = action.payload.totalPages;
+        state.hasMore = action.payload.hasMore;
       })
       .addCase(fetchArticles.rejected, (state, action) => {
         state.isLoading = false;

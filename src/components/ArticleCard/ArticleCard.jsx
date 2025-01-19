@@ -20,7 +20,7 @@ const ArticleCard = ({ article }) => {
   const isLiked = article.likes.includes(userId);
 
   return (
-    <div className="article-card border p-4 mb-4">
+    <div className="article-card p-4 mb-4">
       <h2 className="text-xl font-bold">{article.title}</h2>
       <p>{article.description}</p>
       {article.urlToImage && (
